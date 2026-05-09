@@ -2,8 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>강남 예약</title>
+
   <style>
     * {
       margin: 0;
@@ -11,41 +12,63 @@
       box-sizing: border-box;
     }
 
-    body {
+    html, body {
+      width: 100%;
+      height: 100%;
       background: #000;
       font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      overflow-x: hidden;
     }
 
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    /* 모바일 화면 기준 최대 너비 제한 */
     .container {
-      max-width: 100%;
       width: 100%;
+      max-width: 480px;   /* 일반 스마트폰 화면에 최적화 */
       margin: 0 auto;
     }
 
+    /* 이미지 전체 클릭 시 전화 연결 */
     .call-link {
       display: block;
       width: 100%;
       text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .call-link img {
       display: block;
       width: 100%;
       height: auto;
-      border: none;
+      border: 0;
     }
 
-    /* 모바일에서 터치 반응 */
+    /* 터치 시 살짝 어두워지는 효과 */
     .call-link:active {
       opacity: 0.95;
+    }
+
+    /* 태블릿 이상에서는 가운데 정렬 */
+    @media (min-width: 768px) {
+      body {
+        padding: 20px 0;
+      }
+
+      .container {
+        max-width: 480px;
+      }
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <!-- 이미지 전체를 클릭하면 전화 연결 -->
     <a href="tel:01080372853" class="call-link">
-      <img src="강남.png" alt="강남 가라오케 예약 전화 연결 010-8037-2853">
+      <img src="강남.png" alt="강남 가라오케 예약 전화 연결 010-8037-2853" />
     </a>
   </div>
 </body>
